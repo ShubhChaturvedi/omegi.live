@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Socket, io } from "socket.io-client";
 
-const URL = "http://localhost:3000";
+const URL = "https://ec2-3-25-57-1.ap-southeast-2.compute.amazonaws.com:3000/";
 
 export default function Room({
   name,
