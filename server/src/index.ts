@@ -13,6 +13,10 @@ const io = new Server(server, {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("health check");
+});
+
 const userManager = new UserManager();
 
 io.on("connection", (socket: Socket)=>{
