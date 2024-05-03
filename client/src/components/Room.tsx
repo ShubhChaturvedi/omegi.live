@@ -27,7 +27,6 @@ export default function Room({
     useEffect(() => {
         const socket = io(URL);
         socket.on('send-offer', async ({roomId}) => {
-            console.log("sending offer");
             setLobby(false);
             const pc = new RTCPeerConnection();
 
