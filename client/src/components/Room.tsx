@@ -206,6 +206,7 @@ export default function Room({
         <video
         height={400}
         width={400}
+        //@ts-ignore
         ref={localVideoRef}
         autoPlay></video>
       </div>
@@ -218,11 +219,13 @@ export default function Room({
         <video
         height={400}
         width={600}
+        //@ts-ignore
         ref={localVideoRef}
         autoPlay></video>
         <video
         height={400}
         width={600}
+        //@ts-ignore
         ref={remoteVideoRef}
         autoPlay></video>
 

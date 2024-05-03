@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import Room from "./Room";
 
@@ -7,8 +6,8 @@ export default function Landing() {
   const [name, setName] = useState("");
   const [joined, setJoined] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [localVideoTrack, setLocalVideoTrack] = useState<MediaStreamTrack | null>(null)
-  const [localAudioTrack, setLocalAudioTrack] = useState<MediaStreamTrack | null>(null)
+  const [localVideoTrack, setLocalVideoTrack] = useState<MediaStreamTrack>(new MediaStream().getVideoTracks()[0]);
+  const [localAudioTrack, setLocalAudioTrack] = useState<MediaStreamTrack>(new MediaStream().getAudioTracks()[0]);
   
   const cam = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
