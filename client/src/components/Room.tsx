@@ -21,6 +21,8 @@ export default function Room({
     const [remoteMediaStream, setRemoteMediaStream] = useState<MediaStream | null>(null);
     const remoteVideoRef = useRef<HTMLVideoElement>();
     const localVideoRef = useRef<HTMLVideoElement>();
+    const [video , setVideo] = useState<"video off" | "video on">("video off");
+    const [mute, setMute] = useState<"mute" | "unmute">("mute");
 
     useEffect(() => {
         const socket = io(URL);
@@ -188,10 +190,10 @@ export default function Room({
         if (localVideoRef.current) {
             if (localVideoTrack) {
                 localVideoRef.current.srcObject = new MediaStream([localVideoTrack]);
-                localVideoRef.current.play();
+                // localVideoRef.current.play();
             }
         }
-    }, [localVideoRef])
+    }, [localVideoRef, localAudioTrack, localVideoTrack])
   return (
     <>
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -236,9 +238,10 @@ export default function Room({
         onClick={
           ()=>{
             localAudioTrack.enabled = !localAudioTrack.enabled;
+            setMute(localAudioTrack.enabled ? "mute" : "unmute");
           }
         }
-        >Mute</button>
+        >{mute}</button>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold m-2 py-2 px-4 rounded"
         style={
           {
@@ -247,9 +250,11 @@ export default function Room({
         }
         onClick={
           ()=>{
-            localVideoTrack.enabled = !localVideoTrack.enabled;}
+            localVideoTrack.enabled = !localVideoTrack.enabled;
+            setVideo(localVideoTrack.enabled ? "video off" : "video on");
+          }
         }
-        >video off</button>
+        >{video}</button>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold m-2 py-2 px-4 rounded"
         onClick={
           ()=>{
