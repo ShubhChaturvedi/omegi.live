@@ -146,6 +146,7 @@ export default function Room({
 
         socket.on("answer", ({roomId, sdp: remoteSdp}) => {
             setLobby(false);
+            console.log(roomId);
             setSendingPc(pc => {
                 pc?.setRemoteDescription(remoteSdp)
                 return pc;
@@ -191,6 +192,7 @@ export default function Room({
             if (localVideoTrack) {
                 localVideoRef.current.srcObject = new MediaStream([localVideoTrack]);
                 // localVideoRef.current.play();
+                console.log(socket,sendingPc,receivingPc, remoteVideoTrack, remoteAudioTrack, remoteMediaStream)
             }
         }
     }, [localVideoRef, localAudioTrack, localVideoTrack])
