@@ -14,6 +14,9 @@ const io = new socket_io_1.Server(server, {
         origin: "*"
     }
 });
+app.get("/", (req, res) => {
+    res.send("health check");
+});
 const userManager = new UserManager_1.UserManager();
 io.on("connection", (socket) => {
     console.log("a user is connected");
