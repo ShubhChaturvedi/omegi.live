@@ -5,7 +5,7 @@ import { Socket, io } from "socket.io-client";
 
 // const URL = "http://localhost:3000/";
 
-const URL = "https://26d2-2401-4900-1c5e-4a8c-2b48-8486-f05a-5ecd.ngrok-free.app/";
+const URL = "34.228.17.23:3000";
 
 export default function Room({
   name,
