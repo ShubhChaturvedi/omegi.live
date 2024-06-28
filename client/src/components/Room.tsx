@@ -3,7 +3,7 @@ import { Socket, io } from "socket.io-client";
 
 // const URL = "https://ec2-3-25-57-1.ap-southeast-2.compute.amazonaws.com:3000/";
 
-const URL = "http://34.228.17.23:3000";
+const URL = "https://omegi-live.onrender.com/";
 
 // const URL = "https://26d2-2401-4900-1c5e-4a8c-2b48-8486-f05a-5ecd.ngrok-free.app/";
 
