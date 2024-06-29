@@ -190,7 +190,6 @@ export default function Room({
         setSocket(socket)
         // again set local video track
     }, [name])
-    const [rerender , setRerender] = useState(false);
 
     // when socket changes rerender the component
     useEffect(() => {
