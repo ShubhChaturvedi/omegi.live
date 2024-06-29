@@ -188,7 +188,24 @@ export default function Room({
         })
 
         setSocket(socket)
+        // again set local video track
     }, [name])
+    const [rerender , setRerender] = useState(false);
+
+    // when socket changes rerender the component
+    useEffect(() => {
+        setTimeout(() => {
+            // set local video track 
+            if (localVideoRef.current) {
+                if (localVideoTrack) {
+                    localVideoRef.current.srcObject = new MediaStream([localVideoTrack]);
+                    // localVideoRef.current.play();
+                    console.log(socket,sendingPc,receivingPc, remoteVideoTrack, remoteAudioTrack, remoteMediaStream)
+                }
+              }
+        }
+        , 6000)
+    }, [])
 
     useEffect(() => {
         if (localVideoRef.current) {
@@ -221,12 +238,12 @@ export default function Room({
       <>
       <h1 className="text-4xl font-extrabold text-gray-900">You are live</h1>
       <div className="flex flex-row">
-        <video
-        height={400}
-        width={600}
-        //@ts-ignore
-        ref={localVideoRef}
-        autoPlay></video>
+          <video
+          height={400}
+          width={600}
+          //@ts-ignore
+          ref={localVideoRef}
+          autoPlay></video>
         <video
         height={400}
         width={600}
